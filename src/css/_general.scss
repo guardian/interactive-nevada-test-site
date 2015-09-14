@@ -19,7 +19,11 @@ a {
     }
 }
 
-.interactive-container {
+.interactive-es6-headline {
+	@include fs-headline(5);
+}
+
+.nts-container {
     margin: 0 auto;
     box-sizing: border-box;
     background-color: white;
@@ -36,26 +40,42 @@ a {
     }
 }
 
-.interactive-es6-headline {
-	@include fs-headline(5);
+.nts-fullscreen {
+    height: 100vh;
 }
 
-.test-msg {
-	color: #005689;
-	@include fs-textSans(3);
+.nts-photo {
+    position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
-.fonts {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	margin-top: 24px;
-	li {
-		margin-bottom: 6px;
-	}
+.nts-headline {
+    position: absolute;
+    top: 20%;
+    left: 100px;
+    right: 100px;
+    padding: 20px;
 }
 
-.fonts__egyptian { @include fs-headline(3); }
-.fonts__text-egyptian { @include fs-bodyCopy(2); }
-.fonts__sans { @include f-headlineSans; }
-.fonts__text-sans { @include fs-textSans(4); }
+.nts-headline__quote {
+    @include f-headline;
+    font-size: 70px;
+    line-height: 1.25;
+    color: white;
+
+    &::before {
+        content: "\201c";
+    }
+    &::after {
+        content: "\201d";
+    }
+}
+
+.nts-headline__author {
+    text-align: right;
+    font-size: 20px;
+    &::before {
+        content: "\2014\00a0";
+    }
+}
