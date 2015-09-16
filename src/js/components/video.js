@@ -52,14 +52,22 @@ export default function video(el, options) {
         }
     });
 
+    // Controls (hide when mouse doesn't move)
+    var timer;
     function hideControls() {
         containerEl.removeAttribute('data-controls');
+        clearTimeout(timer);
     }
     function showControls() {
         containerEl.setAttribute('data-controls', '');
     }
 
-    containerEl.addEventListener('mouseover', showControls);
+    containerEl.addEventListener('mouseover', () => {
+        showControls();
+        containerEl.addEventListener('mousemouse', () => clearTimeout(timer));
+        timer = setTimeout(hideControls, 2000);
+    });
+
     containerEl.addEventListener('mouseout', hideControls);
 
     // Buttons
