@@ -40,6 +40,22 @@ export default function video(el, options) {
         el.querySelector('.js-duration').textContent = '(' + mins + ':' + secs + ')';
     });
 
+    // Controls (hide when mouse doesn't move)
+    var timer;
+    function showControls() {
+        containerEl.setAttribute('data-controls', '');
+        containerEl.addEventListener('mousemouse', () => clearTimeout(timer));
+        timer = setTimeout(hideControls, 2000);
+    }
+    function hideControls() {
+        containerEl.removeAttribute('data-controls');
+        clearTimeout(timer);
+    }
+
+    containerEl.addEventListener('mouseover', showControls);
+    containerEl.addEventListener('mouseout', hideControls);
+
+
     // Video state
     videoEl.addEventListener('play', () => containerEl.setAttribute('data-playing', ''));
     videoEl.addEventListener('pause', () => containerEl.removeAttribute('data-playing'));
@@ -51,36 +67,15 @@ export default function video(el, options) {
         }
     });
 
-    // Controls (hide when mouse doesn't move)
-    var timer;
-    function hideControls() {
-        containerEl.removeAttribute('data-controls');
-        clearTimeout(timer);
-    }
-    function showControls() {
-        containerEl.setAttribute('data-controls', '');
-    }
-
-    containerEl.addEventListener('mouseover', () => {
-        showControls();
-        containerEl.addEventListener('mousemouse', () => clearTimeout(timer));
-        timer = setTimeout(hideControls, 2000);
-    });
-
-    containerEl.addEventListener('mouseout', hideControls);
-
     // Buttons
-    restartEl.addEventListener('click', () => {
-        videoEl.muted = false;
-        videoEl.currentTime = 0;
-        videoEl.play();
-    });
-
-    playEl.addEventListener('click', () => {
+    function userPlay() {
         videoEl.muted = false;
         videoEl.play();
-    });
-
+        hideControls();
+    }
+    restartEl.addEventListener('click', () => videoEl.currentTime = 0);
+    restartEl.addEventListener('click', userPlay);
+    playEl.addEventListener('click', userPlay);
     pauseEl.addEventListener('click', () => videoEl.pause());
 
     // Sticky video
