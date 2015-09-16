@@ -3,6 +3,7 @@ figure.interactive {
     margin: 0;
     padding: 0;
     background-color: #dcdcdc;
+    color: #333;
 }
 
 // Link styles don't exist on the app
@@ -85,5 +86,22 @@ p {
     font-size: 20px;
     &::before {
         content: "\2014\00a0";
+    }
+}
+
+.nts-text {
+    font-size: 16px;
+    line-height: 1.6;
+    @include mq(desktop) {
+        font-size: 18px;
+        line-height: 1.7;
+
+        margin: 0 auto;
+        max-width: 660px;
+        padding-left: 240px;
+    }
+
+    @include mq(leftCol) {
+        padding-left: 0;
     }
 }
