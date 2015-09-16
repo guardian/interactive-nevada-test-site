@@ -1,5 +1,17 @@
-<div class="nts-fullscreen">
-    <video class="nts-video js-video">
-        <source src="{{=it.source}}" type="video/mp4" />
-    </video>
+<div class="nts-fullscreen nts-fullscreen--video">
+    <div class="nts-video js-video-container" data-muted>
+        <video class="nts-video__player js-video" muted>
+            <source src="{{=it.source}}" type="video/mp4" />
+        </video>
+        <button class="nts-video__control nts-video__control--play js-play">
+            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 32 32"><path fill="currentColor" d="M23 15.67l-11-4.67-.99.3v9.257l1 .3 11-4.67v-.5"/></svg>
+        </button>
+        <button class="nts-video__control nts-video__control--pause js-pause">
+            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 32 32"><path fill="currentColor" d="M14 22h-3v-10.9l1-1.1h2v12m4-12h3v10.9l-1 1.1h-2v-12"/></svg>
+        </button>
+        <button class="nts-video__control nts-video__control--restart js-restart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="39" viewBox="0 0 16 13"><path fill="currentColor" d="M3 4h-2l-1 1v3l1 1h2l4 4h1v-13h-1l-4 4zm11.7 2.5c0 2-.7 3.8-1.8 5.2l.4.4c1.6-1.3 2.6-3.3 2.6-5.6s-1-4.3-2.6-5.6l-.4.4c1.2 1.5 1.8 3.3 1.8 5.2m-3.7 0c0 1.1-.3 2.2-.9 3.1l.5.5c.8-1 1.4-2.2 1.4-3.6s-.6-2.6-1.5-3.5l-.5.5c.6.8 1 1.9 1 3"/></svg>
+            Replay with sound <span class="js-duration"></span>
+        </button>
+    </div>
 </div>

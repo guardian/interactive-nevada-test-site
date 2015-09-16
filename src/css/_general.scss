@@ -45,12 +45,11 @@ a {
 }
 
 .nts-fullscreen {
+    position: relative;
     height: 100vh;
-    overflow: hidden;
 }
 
 .nts-photo {
-    position: relative;
     background-size: cover;
     background-position: center;
 }
@@ -72,13 +71,6 @@ a {
     line-height: 1.25;
     color: #eaeaea;
     mix-blend-mode: exclusion;
-
-    &::before {
-        content: "\201c";
-    }
-    &::after {
-        content: "\201d";
-    }
 }
 
 .nts-headline__author {
@@ -89,11 +81,6 @@ a {
     }
 }
 
-.nts-video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
+.nts-map {
+    background-image: url('../assets/imgs/map.png');
 }
