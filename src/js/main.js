@@ -30,7 +30,9 @@ export function init(el, context, config, mediator) {
         success: resp => {
             el.innerHTML = '';
             resp.blocks.forEach(block => {
-                (components[block.block] || baseComponent(block.block))(el, block);
+                var componentEl = document.createElement('section');
+                el.appendChild(componentEl);
+                (components[block.block] || baseComponent(block.block))(componentEl, block);
             });
         }
     });
