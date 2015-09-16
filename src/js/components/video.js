@@ -3,7 +3,7 @@ import template from './templates/video.html!text'
 
 const templateFn = doT.template(template);
 
-const scrollTolerance = 50;
+const scrollTolerance = 75;
 
 var first = true;
 
@@ -29,7 +29,6 @@ export default function video(el, options) {
 
     var containerEl = el.querySelector('.js-video-container');
     var videoEl = el.querySelector('.js-video');
-
     var restartEl = el.querySelector('.js-restart');
     var playEl = el.querySelector('.js-play');
     var pauseEl = el.querySelector('.js-pause');
@@ -95,10 +94,12 @@ export default function video(el, options) {
 
         if (isSticky !== newSticky) {
             isSticky = toggleClass(containerEl, newSticky, 'is-sticky');
-            if (isSticky) {
-                videoEl.play();
-            } else {
-                videoEl.pause();
+            if (videoEl.muted) {
+                if (isSticky) {
+                    videoEl.play();
+                } else {
+                    videoEl.pause();
+                }
             }
         }
         if (isBottom !== newBottom) {
