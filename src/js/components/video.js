@@ -5,8 +5,6 @@ const templateFn = doT.template(template);
 
 const scrollTolerance = 75;
 
-var first = true;
-
 function getOffset(el) {
     return el ? el.offsetTop + getOffset(el.offsetParent) : 0;
 }
@@ -54,7 +52,6 @@ export default function video(el, options) {
 
     containerEl.addEventListener('mouseover', showControls);
     containerEl.addEventListener('mouseout', hideControls);
-
 
     // Video state
     videoEl.addEventListener('play', () => containerEl.setAttribute('data-playing', ''));

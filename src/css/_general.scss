@@ -19,6 +19,13 @@ a {
     }
 }
 
+p {
+    margin: 0 0 8px 0;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .interactive-es6-headline {
 	@include fs-headline(5);
 }
@@ -79,8 +86,4 @@ a {
     &::before {
         content: "\2014\00a0";
     }
-}
-
-.nts-map {
-    background-image: url('../assets/imgs/map.png');
 }
