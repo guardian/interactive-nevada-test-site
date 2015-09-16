@@ -23,10 +23,10 @@ a {
 	@include fs-headline(5);
 }
 
-.nts-container {
+.nts-container,
+.nts-headline {
     margin: 0 auto;
     box-sizing: border-box;
-    background-color: white;
 
     padding: 10px;
     @include mq(mobileLandscape) {
@@ -38,6 +38,10 @@ a {
             max-width: map-get($mq-breakpoints, $bp);
         }
     }
+}
+
+.nts-container {
+    background-color: white;
 }
 
 .nts-fullscreen {
@@ -55,19 +59,19 @@ a {
     position: absolute;
 }
 
-.nts-headline {
+.nts-headline-container {
     position: absolute;
-    top: 20%;
-    left: 100px;
-    right: 100px;
-    padding: 20px;
+    top: 10%;
+    left: 0;
+    right: 0;
 }
 
 .nts-headline__quote {
     @include f-headline;
     font-size: 70px;
     line-height: 1.25;
-    color: white;
+    color: #eaeaea;
+    mix-blend-mode: exclusion;
 
     &::before {
         content: "\201c";
