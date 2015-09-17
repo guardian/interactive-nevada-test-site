@@ -1,5 +1,6 @@
 import doT from 'olado/doT'
 import template from './templates/map.html!text'
+import tests from '../data/tests.json!json'
 
 const templateFn = doT.template(template);
 
@@ -27,10 +28,10 @@ var mapEls = [];
 window.addEventListener('resize', () => rAF(setRatio.bind(null, mapEls)));
 
 export default function map(el, options) {
+    options.tests = tests;
     el.innerHTML += templateFn(options);
 
     var mapEl = el.querySelector('.js-map');
     mapEls.push(mapEl);
-
     setRatio([mapEl]);
 }

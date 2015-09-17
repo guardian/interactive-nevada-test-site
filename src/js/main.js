@@ -8,13 +8,15 @@ import map from './components/map'
 import headerHTML from './templates/header.html!text'
 import photoHTML from './templates/photo.html!text'
 import textHTML from './templates/text.html!text'
+import galleryHTML from './templates/gallery.html!text'
 
 const contentURL = '//interactive.guim.co.uk/docsdata-test/1gqa6aP0y7Hu5eaP4gKecUJbAmNz_-8LoeK34-oMvRPw.json';
 
 const templates = {
     'header': doT.template(headerHTML),
     'photo': doT.template(photoHTML),
-    'text': doT.template(textHTML)
+    'text': doT.template(textHTML),
+    'gallery': doT.template(galleryHTML)
 };
 
 const components = {video, map};

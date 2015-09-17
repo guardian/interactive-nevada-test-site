@@ -10,7 +10,7 @@ $map-height: 894px;
         &, & > .nts-map__map {
             height: 100%;
         }
-        & > .nts-map__bombs,
+        & > .nts-map__tests,
         & > .nts-map__map {
             margin-left: -50%;
         }
@@ -24,7 +24,7 @@ $map-height: 894px;
     }
 }
 
-.nts-map__bombs {
+.nts-map__tests {
     position: absolute;
     top: 0;
     left: 0;
@@ -34,4 +34,18 @@ $map-height: 894px;
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.nts-map__tests__test {
+    position: absolute;
+    border-radius: 100px;
+    background-color: transparentize(#ff9b0b, 0.3);
+}
+
+.nts-map__tests__test__name {
+    display: none;
+    pointer-events: none;
+    .nts-map__tests__test:hover > & {
+        display: block;
+    }
 }
