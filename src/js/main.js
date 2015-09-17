@@ -32,6 +32,7 @@ export function init(el, context, config, mediator) {
         success: resp => {
             el.innerHTML = '';
             resp.blocks.forEach(block => {
+                block.config = config;
                 if (block.copy) {
                     block.copy = block.copy.replace(/[\r\n]+/g, '\n').trim().split('\n');
                 }
