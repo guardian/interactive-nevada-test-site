@@ -68,6 +68,17 @@ $map-height: 894px;
     padding: 0;
 }
 
+@-webkit-keyframes test-in {
+    0% { background-color: transparent; }
+    20% { background-color: #c05303; }
+    100% { background-color: transparentize(#ff9b0b, 0.5); }
+}
+@keyframes test-in {
+    0% { background-color: transparent; }
+    20% { background-color: #c05303; }
+    100% { background-color: transparentize(#ff9b0b, 0.5); }
+}
+
 .nts-map__tests__test {
     position: absolute;
     border-radius: 100px;
@@ -77,9 +88,10 @@ $map-height: 894px;
     -webkit-transform: translate(-1000px, -1000px);
     transform: translate(-1000px, -1000px);
 
-    transition: background-color 0.5s ease-out;
     &.is-visible {
-        background-color: transparentize(#ff9b0b, 0.3);
+        -webkit-animation: test-in 1s 1;
+        animation: test-in 1s 1;
+        background-color: transparentize(#ff9b0b, 0.5);
         -ms-transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
