@@ -34,6 +34,7 @@ export function init(el, context, config, mediator) {
                     block.copy = block.copy.replace(/[\r\n]+/g, '\n').trim().split('\n');
                 }
                 var componentEl = document.createElement('section');
+                componentEl.className = 'nts-section';
                 el.appendChild(componentEl);
                 (components[block.block] || baseComponent(block.block))(componentEl, block);
             });

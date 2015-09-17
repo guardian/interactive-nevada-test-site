@@ -1,3 +1,25 @@
+$map-width: 1555px;
+$map-height: 894px;
+
 .nts-map {
-    background-image: url('../assets/imgs/map.png');
+    //background-image: url('../assets/imgs/map.png');
+    position: relative;
+    display: inline-block;
+
+    &[data-ratio='wider'] {
+        left: 50%;
+        margin-left: -50%;
+        &,
+        & > .nts-map__map {
+            height: 100%;
+        }
+    }
+    &[data-ratio='taller'] {
+        top: 50%;
+        margin-top: -($map-height / $map-width * 50%);
+        &,
+        & > .nts-map__map {
+            width: 100%;
+        }
+    }
 }
