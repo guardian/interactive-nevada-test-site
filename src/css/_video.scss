@@ -1,31 +1,3 @@
-$scroll-tolerance: 75px;
-
-.nts-fullscreen--sticky {
-    margin-bottom: $scroll-tolerance;
-}
-
-.nts-sticky {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    &.is-sticky,
-    &.is-bottom {
-        z-index: 100;
-        left: 0;
-    }
-
-    &.is-sticky {
-        position: fixed;
-        top: 0;
-    }
-
-    &.is-bottom {
-        position: absolute;
-        top: $scroll-tolerance;
-    }
-}
-
 .nts-video__player {
     display: block;
     width: 100%;
