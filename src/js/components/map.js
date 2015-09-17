@@ -28,13 +28,6 @@ var mapEls = [];
 
 window.addEventListener('resize', () => rAF(setRatio.bind(null, mapEls)));
 
-function translate(el, x, y) {
-    var t = `translate(${x}px, ${y}px)`;
-    el.style.transform = t;
-    el.style.msTransform = t;
-    el.style.webkitTransform = t;
-}
-
 export default function map(el, options) {
     options.tests = tests;
     el.innerHTML += templateFn(options);
@@ -50,19 +43,21 @@ export default function map(el, options) {
     var timer;
     function addTest() {
         if (testI < tests.length - 1) {
-            yearEl.textContent = tests[testI].year;
-            translate(testEls[testI], 0, 0);
-            testI++;
-            timer = setTimeout(addTest, 20);
+            rAF(() => {
+                yearEl.textContent = tests[testI].year;
+                testEls[testI].className += ' is-visible';
+                testI++;
+                timer = setTimeout(addTest, 20);
+            });
         }
     }
 
     el.querySelector('.js-restart').addEventListener('click', () => {
+        clearTimeout(timer);
         for (var i = 0; i < testEls.length; i++) {
-            translate(testEls[i], -1000, -1000);
+            testEls[i].className = testEls[i].className.replace(/is-visible/g, '').trim();
         }
         testI = 0;
-        clearTimeout(timer);
         addTest();
     });
 

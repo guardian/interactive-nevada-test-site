@@ -10,8 +10,9 @@ $map-height: 894px;
         &, & > .nts-map__map {
             height: 100%;
         }
+        & > .nts-map__map,
         & > .nts-map__tests,
-        & > .nts-map__map {
+        & > .nts-map__year {
             margin-left: -50%;
         }
     }
@@ -70,11 +71,19 @@ $map-height: 894px;
 .nts-map__tests__test {
     position: absolute;
     border-radius: 100px;
-    background-color: transparentize(#ff9b0b, 0.3);
+    background-color: transparent;
 
     -ms-transform: translate(-1000px, -1000px);
     -webkit-transform: translate(-1000px, -1000px);
     transform: translate(-1000px, -1000px);
+
+    transition: background-color 0.5s ease-out;
+    &.is-visible {
+        background-color: transparentize(#ff9b0b, 0.3);
+        -ms-transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
 }
 
 .nts-map__year {
