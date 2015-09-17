@@ -28,6 +28,13 @@ var mapEls = [];
 
 window.addEventListener('resize', () => rAF(setRatio.bind(null, mapEls)));
 
+function translate(el, x, y) {
+    var t = `translate(${x}px, ${y}px)`;
+    el.style.transform = t;
+    el.style.msTransform = t;
+    el.style.webkitTransform = t;
+}
+
 export default function map(el, options) {
     options.tests = tests;
     el.innerHTML += templateFn(options);
@@ -36,5 +43,34 @@ export default function map(el, options) {
     mapEls.push(mapEl);
     setRatio([mapEl]);
 
-    sticky(el, el.querySelector('.js-sticky'), () => {});
+    var testEls = [].slice.call(el.querySelectorAll('.js-test'));
+    var yearEl = el.querySelector('.js-year');
+
+    var testI = 0;
+    var timer;
+    function addTest() {
+        if (testI < tests.length - 1) {
+            yearEl.textContent = tests[testI].year;
+            translate(testEls[testI], 0, 0);
+            testI++;
+            timer = setTimeout(addTest, 20);
+        }
+    }
+
+    el.querySelector('.js-restart').addEventListener('click', () => {
+        for (var i = 0; i < testEls.length; i++) {
+            translate(testEls[i], -1000, -1000);
+        }
+        testI = 0;
+        clearTimeout(timer);
+        addTest();
+    });
+
+    sticky(el, el.querySelector('.js-sticky'), isSticky => {
+        if (isSticky) {
+            addTest();
+        } else {
+            clearTimeout(timer);
+        }
+    });
 }

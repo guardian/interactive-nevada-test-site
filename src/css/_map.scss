@@ -24,6 +24,37 @@ $map-height: 894px;
     }
 }
 
+.nts-map-restart {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    @include f-textSans;
+    font-size: 16px;
+    font-weight: 700;
+
+    border: 0;
+    border-radius: 5px;
+    background: none;
+    margin: 0;
+    padding: 10px;
+    outline: 0;
+
+    background-color: transparentize(black, 0.7);
+
+    transition: color 0.2s ease-out;
+    color: white;
+    &:hover {
+        color: #4bc6df;
+    }
+
+    & > svg {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+}
+
 .nts-map__tests {
     position: absolute;
     top: 0;
@@ -40,12 +71,17 @@ $map-height: 894px;
     position: absolute;
     border-radius: 100px;
     background-color: transparentize(#ff9b0b, 0.3);
+
+    -ms-transform: translate(-1000px, -1000px);
+    -webkit-transform: translate(-1000px, -1000px);
+    transform: translate(-1000px, -1000px);
 }
 
-.nts-map__tests__test__name {
-    display: none;
-    pointer-events: none;
-    .nts-map__tests__test:hover > & {
-        display: block;
-    }
+.nts-map__year {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    @include f-headline;
+    font-size: 110px;
+    color: white;
 }
