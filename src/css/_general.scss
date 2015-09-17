@@ -92,6 +92,8 @@ p {
 .nts-text {
     font-size: 16px;
     line-height: 1.6;
+    margin-bottom: 1.5em;
+
     @include mq(desktop) {
         font-size: 18px;
         line-height: 1.7;
