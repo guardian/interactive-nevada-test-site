@@ -7,20 +7,24 @@ const mapWidth = 1555;
 const mapHeight = 894;
 const mapRatio = mapWidth / mapHeight;
 
+var rAF = window.requestAnimationFrame || (fn => fn());
+
+var setRatio = (function () {
+    var lastRatio;
+    return function (els) {
+        var newRatio = mapRatio > window.innerWidth / window.innerHeight ? 'wider' : 'taller';
+        if (newRatio !== lastRatio) {
+            lastRatio = newRatio;
+            for (let i = 0; i < mapEls.length; i++) {
+                mapEls[i].setAttribute('data-ratio', newRatio);
+            }
+        }
+    };
+})();
+
 var mapEls = [];
 
-var lastRatio;
-function setRatio(els) {
-    var newRatio = mapRatio > window.innerWidth / window.innerHeight ? 'wider' : 'taller';
-    if (newRatio !== lastRatio) {
-        lastRatio = newRatio;
-        for (let i = 0; i < mapEls.length; i++) {
-            mapEls[i].setAttribute('data-ratio', newRatio);
-        }
-    }
-}
-
-window.addEventListener('resize', setRatio.bind(null, mapEls));
+window.addEventListener('resize', () => rAF(setRatio.bind(null, mapEls)));
 
 export default function map(el, options) {
     el.innerHTML += templateFn(options);
