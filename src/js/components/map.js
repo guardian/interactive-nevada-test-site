@@ -1,4 +1,5 @@
 import doT from 'olado/doT'
+import sticky from '../lib/sticky'
 import template from './templates/map.html!text'
 import tests from '../data/tests.json!json'
 
@@ -34,4 +35,6 @@ export default function map(el, options) {
     var mapEl = el.querySelector('.js-map');
     mapEls.push(mapEl);
     setRatio([mapEl]);
+
+    sticky(el, el.querySelector('.js-sticky'), () => {});
 }

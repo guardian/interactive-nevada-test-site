@@ -1,13 +1,14 @@
-<div class="nts-fullscreen">
-    <div class="nts-map js-map">
-        <img class="nts-map__map" src="/assets/imgs/map.png" />
-        <ul class="nts-map__tests js-tests">
-            {{~it.tests :test:i}}
-                <li class="nts-map__tests__test"
-                    style="top: {{=test.point[1]}}%; left: {{=test.point[0]}}%; width: {{=test.yield}}px; height: {{=test.yield}}px; margin-left: {{=-test.yield / 2}}px; margin-top: {{=-test.yield / 2}}px">
-                    <span class="nts-map__tests__test__name">{{=test.name}}</span>
-                </li>
-            {{~}}
-        </ul>
+<div class="nts-fullscreen nts-fullscreen--sticky">
+    <div class="nts-sticky js-sticky">
+        <div class="nts-map js-map">
+            <img class="nts-map__map" src="/assets/imgs/map.png" />
+            <ul class="nts-map__tests js-tests">
+                {{~it.tests :test:i}}
+                    <li class="nts-map__tests__test"
+                        style="top: {{=test.point[1]}}%; left: {{=test.point[0]}}%; width: {{=test.yield}}px; height: {{=test.yield}}px; margin-left: {{=-test.yield / 2}}px; margin-top: {{=-test.yield / 2}}px">
+                    </li>
+                {{~}}
+            </ul>
+        </div>
     </div>
 </div>

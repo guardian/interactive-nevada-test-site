@@ -1,22 +1,8 @@
 import doT from 'olado/doT'
+import sticky from '../lib/sticky'
 import template from './templates/video.html!text'
 
 const templateFn = doT.template(template);
-
-const scrollTolerance = 75;
-
-function getOffset(el) {
-    return el ? el.offsetTop + getOffset(el.offsetParent) : 0;
-}
-
-function toggleClass(el, toggle, className) {
-    if (toggle) {
-        el.className += ' ' + className;
-    } else {
-        el.className = el.className.replace(new RegExp(className, 'g'), '').trim();
-    }
-    return toggle;
-}
 
 function pad(n) {
     return (n < 10 ? '0' : '') + n;
@@ -76,26 +62,13 @@ export default function video(el, options) {
     pauseEl.addEventListener('click', () => videoEl.pause());
 
     // Sticky video
-    var isSticky = false, isBottom = false;
-    window.addEventListener('scroll', () => {
-        var pageY = window.pageYOffset;
-        var containerTop = getOffset(el);
-
-        var newBottom = pageY > containerTop + scrollTolerance;
-        var newSticky = pageY >= containerTop && !newBottom;
-
-        if (isSticky !== newSticky) {
-            isSticky = toggleClass(containerEl, newSticky, 'is-sticky');
-            if (videoEl.muted) {
-                if (isSticky) {
-                    videoEl.play();
-                } else {
-                    videoEl.pause();
-                }
+    sticky(el, containerEl, isSticky => {
+        if (videoEl.muted) {
+            if (isSticky) {
+                videoEl.play();
+            } else {
+                videoEl.pause();
             }
-        }
-        if (isBottom !== newBottom) {
-            isBottom = toggleClass(containerEl, newBottom, 'is-bottom');
         }
     });
 }
