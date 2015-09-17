@@ -45,20 +45,26 @@ var tests = testsIn.map(function (test) {
     var point = projection([test.lng, test.lat]);
     var scaled = [scale(point[0], tl[0], br[0], 100), scale(point[1], tl[1], br[1], 100)];
 
+    var date = test.datetime.split(' ').slice(0, 3).join(' ');
+
     return {
         'point': scaled.map(function (p) { return Number(p.toFixed(3)); }),
         'name': test.name,
-        'yield': yield
+        'yield': yield,
+        'date': date
     };
 }).filter(function (test) {
     var point = test.point;
     return point[0] >= 0 && point[0] <= 100 && point[1] >= 0 && point[1] <= 100;
-})
+}).sort(function (a, b) {
+    return +new Date(a.date) - new Date(b.date);
+});
 
 tests.forEach(function (test) {
     if (test.yield) {
         test.yield = Math.round(scale(test.yield, minYield, maxYield, maxR) + minR);
-   }
+    }
+    //delete test.date;
 });
 
 rw.writeFileSync('/dev/stdout', JSON.stringify(tests));
