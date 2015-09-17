@@ -62,13 +62,15 @@ export default function video(el, options) {
     pauseEl.addEventListener('click', () => videoEl.pause());
 
     // Sticky video
-    sticky(el, containerEl, isSticky => {
-        if (videoEl.muted) {
-            if (isSticky) {
-                videoEl.play();
-            } else {
-                videoEl.pause();
+    if (!options.inline) {
+        sticky(el, containerEl, isSticky => {
+            if (videoEl.muted) {
+                if (isSticky) {
+                    videoEl.play();
+                } else {
+                    videoEl.pause();
+                }
             }
-        }
-    });
+        });
+    }
 }

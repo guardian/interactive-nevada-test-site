@@ -13,9 +13,9 @@ var rAF = window.requestAnimationFrame || (fn => fn());
 
 var setRatio = (function () {
     var lastRatio;
-    return function (els) {
+    return function (els, force) {
         var newRatio = mapRatio > window.innerWidth / window.innerHeight ? 'wider' : 'taller';
-        if (newRatio !== lastRatio) {
+        if (newRatio !== lastRatio || force) {
             lastRatio = newRatio;
             for (let i = 0; i < mapEls.length; i++) {
                 mapEls[i].setAttribute('data-ratio', newRatio);
@@ -34,7 +34,7 @@ export default function map(el, options) {
 
     var mapEl = el.querySelector('.js-map');
     mapEls.push(mapEl);
-    setRatio([mapEl]);
+    setRatio([mapEl], true);
 
     var testEls = [].slice.call(el.querySelectorAll('.js-test'));
     var yearEl = el.querySelector('.js-year');

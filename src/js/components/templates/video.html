@@ -1,5 +1,6 @@
-<div class="nts-fullscreen nts-fullscreen--sticky">
-    <div class="nts-video nts-sticky js-video-container" data-muted>
+{{?it.inline}}<div style="background-color: {{=it.color}}">{{?}}
+<div class="{{?it.inline}}nts-container nts-container--video{{??}}nts-fullscreen nts-fullscreen--sticky{{?}}">
+    <div class="nts-video {{?!it.inline}}nts-sticky{{?}} js-video-container" data-muted>
         <video class="nts-video__player js-video" muted>
             <source src="{{=it.config.assetPath}}{{=it.source}}" type="video/mp4" />
         </video>
@@ -15,3 +16,4 @@
         </button>
     </div>
 </div>
+{{?it.inline}}</div>{{?}}
