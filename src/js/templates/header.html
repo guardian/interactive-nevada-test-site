@@ -1,10 +1,8 @@
-<div class="nts-fullscreen nts-photo" style="background-image: url({{=it.image}})">
-    <div class="nts-headline-container">
-        <div class="nts-headline">
-            <h2 class="nts-headline__quote">{{=it.headline}}</h2>
-            {{?it.author}}
-                <p class="nts-headline__author">{{=it.author}}</h2>
-            {{?}}
-        </div>
+<div style="background-color: {{=it.darkcolor}}">
+    <div class="nts-header" style="background-color: {{=it.color}}">
+        <h2 class="nts-header__quote">{{=it.headline}}</h2>
+        {{?it.author}}
+            <p class="nts-header__author">{{=it.author}}</h2>
+        {{?}}
     </div>
 </div>

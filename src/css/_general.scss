@@ -32,7 +32,7 @@ p {
 }
 
 .nts-container,
-.nts-headline {
+.nts-header {
     margin: 0 auto;
     box-sizing: border-box;
 
@@ -66,22 +66,19 @@ p {
     position: absolute;
 }
 
-.nts-headline-container {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
+.nts-header {
+    color: white;
+    height: 60vh;
 }
 
-.nts-headline__quote {
-    @include f-headline;
-    font-size: 70px;
+.nts-header__quote {
+    @include f-header;
+    font-size: 40px;
     line-height: 1.25;
-    color: #eaeaea;
-    mix-blend-mode: exclusion;
+    max-width: 740px;
 }
 
-.nts-headline__author {
+.nts-header__author {
     text-align: right;
     font-size: 20px;
     &::before {
