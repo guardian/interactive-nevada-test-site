@@ -1,7 +1,7 @@
 <div class="nts-fullscreen nts-fullscreen--sticky">
     <div class="nts-video nts-sticky js-video-container" data-muted>
         <video class="nts-video__player js-video" muted>
-            <source src="{{=it.source}}" type="video/mp4" />
+            <source src="{{=it.config.assetPath}}{{=it.source}}" type="video/mp4" />
         </video>
         <button class="nts-video__control nts-video__control--play js-play">
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 32 32"><path fill="currentColor" d="M23 15.67l-11-4.67-.99.3v9.257l1 .3 11-4.67v-.5"/></svg>
