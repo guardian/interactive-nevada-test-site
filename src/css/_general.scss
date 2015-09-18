@@ -50,18 +50,16 @@ p {
 
 .nts-container {
     background-color: white;
-}
 
-.nts-container--video {
-    position: relative;
-    padding: 0;
+    &.nts-container--video {
+        position: relative;
+        padding: 0;
+    }
 }
 
 .nts-fullscreen {
     position: relative;
-    @include mq(desktop) {
-        height: 100vh;
-    }
+    height: 100vh;
 }
 
 .nts-photo {
@@ -76,13 +74,22 @@ p {
 .nts-header {
     color: white;
     height: 60vh;
+    &.nts-header--collapsed {
+        height: auto;
+    }
 }
 
-.nts-header__quote {
+.nts-header__headline {
     @include f-header;
     font-size: 40px;
     line-height: 1.25;
     max-width: 740px;
+
+    &.nts-header__headline--large {
+        font-size: 144px;
+        max-width: none;
+        text-shadow: 4px 4px rgba(0, 0, 0, 0.5)
+    }
 }
 
 .nts-header__author {

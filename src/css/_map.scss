@@ -98,11 +98,24 @@ $map-height: 894px;
     }
 }
 
-.nts-map__year {
+.nts-map__stats {
     position: absolute;
     left: 50%;
     top: 20%;
     @include f-headline;
-    font-size: 110px;
     color: white;
+    line-height: 1;
+}
+
+.nts-map__stats__year {
+    font-size: 110px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.nts-map__stats__count {
+    font-size: 26px;
+    &::before {
+        content: "Tests: ";
+    }
 }
