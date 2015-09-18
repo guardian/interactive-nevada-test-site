@@ -15,6 +15,10 @@
     }
 }
 
+video::-webkit-media-controls {
+    display:none !important;
+}
+
 .nts-video__player {
     display: block;
     width: 100%;
