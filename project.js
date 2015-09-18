@@ -9,8 +9,8 @@ function scale(value, min, max, range) {
 
 var projection = d3.geo.mercator().scale(1).translate([0, 0]);
 
-var tl = projection([-117.816211392359,37.6208295393796]);
-var br = projection([-113.393483642213,35.5546056227236]);
+var tl = projection([-118.351914860166, 38.0135624552784]);
+var br = projection([-113.068119056973, 35.5813229544127]);
 
 testsIn = JSON.parse(rw.readFileSync('/dev/stdin'));
 

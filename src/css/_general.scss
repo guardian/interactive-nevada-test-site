@@ -86,10 +86,9 @@ p {
 
 .nts-header__headline {
     @include f-headline;
-    line-height: 1.25;
+    line-height: 1.1;
 
     &.nts-header__headline--1 {
-        line-height: 1.1;
         text-shadow: 4px 4px rgba(0, 0, 0, 0.5);
         font-size: 85px;
         @include mq(desktop) {
@@ -127,6 +126,7 @@ p {
 }
 
 .nts-header__author {
+    line-height: 1.25;
     margin-top: 8px;
     &::before {
         content: "\2014\00a0";
