@@ -3,8 +3,8 @@
         <video class="nts-video__player js-video" muted
                 poster="{{=it.source}}&maxbitrate=1000&format=video/mp4&poster=1"
                 {{?it.type === 'intro'}}autoplay loop{{??}}preload="none"{{?}}>
-            <source src="{{=it.source}}&format=video/mp4" type="video/mp4" />
-            <source src="{{=it.source}}&format=video/webm" type="video/webm" />
+            <source src="{{=it.source}}&maxbitrate={{=it.config.bitrate}}&format=video/mp4" type="video/mp4" />
+            <source src="{{=it.source}}&maxbitrate={{=it.config.bitrate}}&format=video/webm" type="video/webm" />
         </video>
         <button class="nts-video__control nts-video__control--play js-play">
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 32 32"><path fill="currentColor" d="M23 15.67l-11-4.67-.99.3v9.257l1 .3 11-4.67v-.5"/></svg>
