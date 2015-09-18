@@ -1,6 +1,6 @@
 <div class="{{?it.type}}nts-container nts-container--{{=it.type}}{{??}}nts-fullscreen nts-fullscreen--sticky{{?}}">
     <div class="nts-video {{?it.type === 'inline'}}nts-video--inline{{??!it.type}}nts-sticky{{?}} js-video-container" data-muted>
-        <video class="nts-video__player js-video" muted>
+        <video class="nts-video__player js-video" muted {{?it.type !== 'intro'}}preload="none"{{?}}>
             <source src="{{=it.config.assetPath}}{{=it.source}}" type="video/mp4" />
         </video>
         <button class="nts-video__control nts-video__control--play js-play">
