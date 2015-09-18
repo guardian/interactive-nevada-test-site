@@ -1,5 +1,6 @@
 import doT from 'olado/doT'
 import sticky from '../lib/sticky'
+import autoplay from '../lib/autoplay'
 import template from './templates/map.html!text'
 import tests from '../data/tests.json!json'
 
@@ -61,6 +62,15 @@ export default function map(el, options) {
         }
         testI = 0;
         addTest();
+    });
+
+    autoplay(el, isVisible => {
+        console.log('autoplay', isVisible);
+        if (isVisible) {
+            addTest();
+        } else {
+            clearTimeout(timer);
+        }
     });
 
     sticky(el, el.querySelector('.js-sticky'), isSticky => {

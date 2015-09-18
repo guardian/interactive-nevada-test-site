@@ -23,6 +23,9 @@
     max-height: 100%;
     object-fit: cover;
     cursor: none;
+    .nts-container--intro & {
+        cursor: auto;
+    }
 }
 
 .nts-video__control {

@@ -15,7 +15,7 @@ function toggleClass(el, toggle, className) {
     return toggle;
 }
 
-export default function sticky(anchorEl, stickyEl, cb) {
+export default function sticky(anchorEl, stickyEl) {
     var isSticky = false, isBottom = false;
 
     window.addEventListener('scroll', () => {
@@ -28,7 +28,6 @@ export default function sticky(anchorEl, stickyEl, cb) {
 
             if (isSticky !== newSticky) {
                 isSticky = toggleClass(stickyEl, newSticky, 'is-sticky');
-                cb(isSticky);
             }
             if (isBottom !== newBottom) {
                 isBottom = toggleClass(stickyEl, newBottom, 'is-bottom');

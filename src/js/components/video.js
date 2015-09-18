@@ -1,5 +1,6 @@
 import doT from 'olado/doT'
 import sticky from '../lib/sticky'
+import autoplay from '../lib/autoplay'
 import template from './templates/video.html!text'
 
 const templateFn = doT.template(template);
@@ -16,13 +17,7 @@ export default function video(el, options) {
     var restartEl = el.querySelector('.js-restart');
     var playEl = el.querySelector('.js-play');
     var pauseEl = el.querySelector('.js-pause');
-
-    videoEl.addEventListener('loadedmetadata', () => {
-        var duration = videoEl.duration;
-        var mins = Math.round(duration / 60);
-        var secs = pad(Math.round(duration % 60));
-        el.querySelector('.js-duration').textContent = '(' + mins + ':' + secs + ')';
-    });
+    var durationEl = el.querySelector('.js-duration');
 
     // Controls (hide when mouse doesn't move)
     var timer;
@@ -56,16 +51,26 @@ export default function video(el, options) {
         videoEl.play();
         hideControls();
     }
-    restartEl.addEventListener('click', () => videoEl.currentTime = 0);
-    restartEl.addEventListener('click', userPlay);
-    playEl.addEventListener('click', userPlay);
-    pauseEl.addEventListener('click', () => videoEl.pause());
+    if (options.type !== 'intro') {
+        restartEl.addEventListener('click', () => videoEl.currentTime = 0);
+        restartEl.addEventListener('click', userPlay);
+        playEl.addEventListener('click', userPlay);
+        pauseEl.addEventListener('click', () => videoEl.pause());
+
+        videoEl.addEventListener('loadedmetadata', () => {
+            var duration = videoEl.duration;
+            var mins = Math.round(duration / 60);
+            var secs = pad(Math.round(duration % 60));
+            durationEl.textContent = '(' + mins + ':' + secs + ')';
+        });
+    }
 
     // Sticky video
     if (!options.type) {
-        sticky(el, containerEl, isSticky => {
+        sticky(el, containerEl);
+        autoplay(el, isVisible => {
             if (videoEl.muted) {
-                if (isSticky) {
+                if (isVisible) {
                     videoEl.play();
                 } else {
                     videoEl.pause();
