@@ -1,42 +1,31 @@
 $scroll-tolerance: 75px;
 
-.nts-fullscreen--sticky {
-    @include mq(desktop) {
-        padding-bottom: $scroll-tolerance;
-        overflow: hidden;
-    }
-    &.nts-fullscreen--always {
-        padding-bottom: $scroll-tolerance;
-        overflow: hidden;
-    }
-}
-
-@mixin nts-sticky {
+.nts-sticky {
     width: 100%;
     height: 100%;
-
-    &.is-sticky,
-    &.is-bottom {
-        z-index: 100;
-        left: 0;
-    }
-
-    &.is-sticky {
-        position: fixed;
-        top: 0;
-    }
-
-    &.is-bottom {
-        position: relative;
-        top: $scroll-tolerance;
-    }
 }
 
-.nts-sticky {
-    @include mq(desktop) {
-        @include nts-sticky;
+@include mq(desktop) {
+    .nts-fullscreen--sticky {
+        padding-bottom: $scroll-tolerance;
+        overflow: hidden;
     }
-    &.nts-sticky--always {
-        @include nts-sticky;
+
+    .nts-sticky {
+        &.is-sticky,
+        &.is-bottom {
+            z-index: 100;
+            left: 0;
+        }
+
+        &.is-sticky {
+            position: fixed;
+            top: 0;
+        }
+
+        &.is-bottom {
+            position: relative;
+            top: $scroll-tolerance;
+        }
     }
 }

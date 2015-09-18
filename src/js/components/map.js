@@ -65,7 +65,6 @@ export default function map(el, options) {
     });
 
     autoplay(el, isVisible => {
-        console.log('autoplay', isVisible);
         if (isVisible) {
             addTest();
         } else {
@@ -73,11 +72,7 @@ export default function map(el, options) {
         }
     });
 
-    sticky(el, el.querySelector('.js-sticky'), isSticky => {
-        if (isSticky) {
-            addTest();
-        } else {
-            clearTimeout(timer);
-        }
-    });
+    if (window.innerWidth > 600) {
+        sticky(el, el.querySelector('.js-sticky'));
+    }
 }

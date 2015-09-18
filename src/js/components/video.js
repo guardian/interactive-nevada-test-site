@@ -66,7 +66,7 @@ export default function video(el, options) {
     }
 
     // Sticky video
-    if (!options.type) {
+    if (!options.type && window.innerWidth > 600) {
         sticky(el, containerEl);
         autoplay(el, isVisible => {
             if (videoEl.muted) {
