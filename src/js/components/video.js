@@ -24,12 +24,16 @@ export default function video(el, options) {
 
     // Controls (hide when mouse doesn't move)
     var timer;
+    function clearTimer() {
+        clearTimeout(timer);
+    }
     function showControls() {
         containerEl.setAttribute('data-controls', '');
-        containerEl.addEventListener('mousemouse', () => clearTimeout(timer));
+        containerEl.addEventListener('mousemove', clearTimer);
         timer = setTimeout(hideControls, 2000);
     }
     function hideControls() {
+        containerEl.removeEventListener('mousemove', clearTimer);
         containerEl.removeAttribute('data-controls');
         clearTimeout(timer);
     }
