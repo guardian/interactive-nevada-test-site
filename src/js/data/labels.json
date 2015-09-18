@@ -5,7 +5,7 @@
     {"right":"6%", "top":"14%", "label": "Utah", "style": "headline", "size": "48px", "color": "#fff"},
     {"right":"10.6%", "top":"35.8%", "label": "St. George", "style": "sans-normal", "size": "18px", "color": "#fff"},
     {"right":"44%", "top":"76%", "label": "Las Vegas", "style": "sans-semibold", "size": "24px", "color": "#fff"},
-    {"right":"65%", "top":"49%", "label": "Nevada test site", "style": "sans-semibold", "size": "21px", "color": "#ffce4b"},
+    {"right":"44%", "top":"51%", "label": "Nevada test site", "style": "sans-semibold", "size": "21px", "color": "#ffce4b"},
     {"right":"54%", "top":"19%", "label": "30 miles", "style": "sans-normal", "size": "14px", "color": "#fff"},
     {"right":"54%", "top":"15%", "label": "50 km", "style": "sans-normal", "size": "14px", "color": "#fff"},
     {"right":"64.2%", "top":"15%", "label": "0", "style": "sans-normal", "size": "14px", "color": "#fff"}
