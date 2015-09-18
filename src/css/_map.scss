@@ -108,14 +108,10 @@ $map-height: 894px;
 }
 
 .nts-map__stats__year {
-    font-size: 110px;
+    font-size: 60px;
+    @include mq(tablet) {
+        font-size: 110px;
+    }
     font-weight: normal;
     margin: 0;
-}
-
-.nts-map__stats__count {
-    font-size: 26px;
-    &::before {
-        content: "Tests: ";
-    }
 }

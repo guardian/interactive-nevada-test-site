@@ -22,7 +22,7 @@ var unitMultiplier = {
 };
 
 var minYield = 100000, maxYield = 0;
-var minR = 5, maxR = 145;
+var minR = 7, maxR = 155;
 
 var tests = testsIn.map(function (test) {
     var yield;
