@@ -4,6 +4,13 @@ figure.interactive {
     padding: 0;
     background-color: #dcdcdc;
     color: #333;
+
+    font-size: 16px;
+    line-height: 1.6;
+    @include mq(desktop) {
+        font-size: 18px;
+        line-height: 1.7;
+    }
 }
 
 // Link styles don't exist on the app
@@ -21,21 +28,13 @@ a {
 }
 
 p {
-    margin: 0 0 8px 0;
-    &:last-child {
-        margin-bottom: 0;
-    }
+    margin: 0;
 }
 
 .nts-container,
 .nts-header {
     margin: 0 auto;
     box-sizing: border-box;
-
-    padding: 10px;
-    @include mq(mobileLandscape) {
-        padding: 20px;
-    }
 
     @each $bp in (tablet, desktop, leftCol, wide) {
         @include mq($bp) {
@@ -47,9 +46,8 @@ p {
 .nts-container {
     background-color: white;
 
-    &.nts-container--full {
-        position: relative;
-        padding: 0;
+    &.nts-container--inline {
+        margin-top: -1.5em;
     }
 }
 
@@ -61,6 +59,11 @@ p {
 .nts-header {
     color: white;
     min-height: 30vh;
+
+    padding: 10px;
+    @include mq(mobileLandscape) {
+        padding: 20px;
+    }
 
     &.nts-header--collapsed {
         min-height: auto;
@@ -109,14 +112,12 @@ p {
 }
 
 .nts-text {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    &:first-child {
+        padding-top: 1.5em;
+    }
 
     @include mq(desktop) {
-        font-size: 18px;
-        line-height: 1.7;
-
         margin-left: auto;
         margin-right: auto;
         max-width: 660px;
