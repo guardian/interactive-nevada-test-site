@@ -9,6 +9,9 @@ function pad(n) {
     return (n < 10 ? '0' : '') + n;
 }
 
+var hasUserUnmuted = false;
+var videoEls = [];
+
 export default function video(el, options) {
     el.innerHTML += templateFn(options);
 
@@ -18,6 +21,8 @@ export default function video(el, options) {
     var playEl = el.querySelector('.js-play');
     var pauseEl = el.querySelector('.js-pause');
     var durationEl = el.querySelector('.js-duration');
+
+    videoEls.push(videoEl);
 
     // Controls (hide when mouse doesn't move)
     var timer;
@@ -35,7 +40,14 @@ export default function video(el, options) {
     containerEl.addEventListener('mouseout', hideControls);
 
     // Video state
-    videoEl.addEventListener('play', () => containerEl.setAttribute('data-playing', ''));
+    videoEl.addEventListener('play', () => {
+        for (var i = 0; i < videoEls.length; i++) {
+            if (videoEls[i] !== videoEl) {
+                videoEls[i].stop();
+            }
+        }
+        containerEl.setAttribute('data-playing', '');
+    });
     videoEl.addEventListener('pause', () => containerEl.removeAttribute('data-playing'));
     videoEl.addEventListener('volumechange', () => {
         if (videoEl.muted) {
@@ -47,6 +59,7 @@ export default function video(el, options) {
 
     // Buttons
     function userPlay() {
+        hasUserUnmuted = true;
         videoEl.muted = false;
         videoEl.play();
         hideControls();
@@ -70,6 +83,9 @@ export default function video(el, options) {
         sticky(el, containerEl);
         autoplay(el, isVisible => {
             if (videoEl.muted) {
+                if (hasUserUnmuted) {
+                    videoEl.muted = false;
+                }
                 if (isVisible) {
                     videoEl.play();
                 } else {
