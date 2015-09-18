@@ -84,16 +84,25 @@
     }
 }
 
-.nts-video:not([data-playing]) .nts-video__control--play,
-.nts-video[data-controls][data-playing] .nts-video__control--pause,
-.nts-video[data-playing][data-muted] .nts-video__control--restart {
-    pointer-events: auto;
-    opacity: 1;
-}
-
 .nts-video__header {
     position: absolute;
     left: 0;
     bottom: 20px;
     width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.nts-video:not([data-playing]),
+.nts-video[data-playing][data-muted] {
+    & .nts-video__header {
+        opacity: 1;
+    }
+}
+
+.nts-video:not([data-playing]) .nts-video__control--play,
+.nts-video[data-controls][data-playing] .nts-video__control--pause,
+.nts-video[data-playing][data-muted] .nts-video__control--restart {
+    pointer-events: auto;
+    opacity: 1;
 }
