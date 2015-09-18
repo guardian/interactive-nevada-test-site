@@ -62,7 +62,7 @@ export default function video(el, options) {
     pauseEl.addEventListener('click', () => videoEl.pause());
 
     // Sticky video
-    if (!options.inline) {
+    if (!options.type) {
         sticky(el, containerEl, isSticky => {
             if (videoEl.muted) {
                 if (isSticky) {

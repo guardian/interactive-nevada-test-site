@@ -1,6 +1,6 @@
-{{?it.inline}}<div style="background-color: {{=it.color}}">{{?}}
-<div class="{{?it.inline}}nts-container nts-container--video{{??}}nts-fullscreen nts-fullscreen--sticky{{?}}">
-    <div class="nts-video {{?!it.inline}}nts-sticky{{?}} js-video-container" data-muted>
+{{?it.color}}<div style="background-color: {{=it.color}}">{{?}}
+<div class="{{?it.type}}nts-container nts-container--full{{??}}nts-fullscreen nts-fullscreen--sticky{{?}}">
+    <div class="nts-video {{?it.type === 'inline'}}nts-video--inline{{??!it.type}}nts-sticky{{?}} js-video-container" data-muted>
         <video class="nts-video__player js-video" muted>
             <source src="{{=it.config.assetPath}}{{=it.source}}" type="video/mp4" />
         </video>
@@ -27,4 +27,4 @@
         {{?}}
     </div>
 </div>
-{{?it.inline}}</div>{{?}}
+{{?it.color}}</div>{{?}}

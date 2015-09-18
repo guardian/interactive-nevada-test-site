@@ -27,7 +27,7 @@ p {
     }
 }
 
-.nts-section {
+.nts-overflow {
     overflow: hidden;
 }
 
@@ -51,7 +51,7 @@ p {
 .nts-container {
     background-color: white;
 
-    &.nts-container--video {
+    &.nts-container--full {
         position: relative;
         padding: 0;
     }

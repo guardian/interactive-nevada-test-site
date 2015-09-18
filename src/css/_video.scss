@@ -1,3 +1,11 @@
+.nts-video {
+    position: relative;
+    &.nts-video--inline {
+        float: left;
+        margin: 0 20px 20px 0;
+    }
+}
+
 .nts-video__player {
     display: block;
     width: 100%;
