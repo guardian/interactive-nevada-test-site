@@ -10,6 +10,7 @@ import bylineHTML from './templates/byline.html!text'
 import headerHTML from './templates/header.html!text'
 import textHTML from './templates/text.html!text'
 import galleryHTML from './templates/gallery.html!text'
+import relatedHTML from './templates/related.html!text'
 
 const contentURL = '//interactive.guim.co.uk/docsdata-test/1gqa6aP0y7Hu5eaP4gKecUJbAmNz_-8LoeK34-oMvRPw.json';
 
@@ -17,7 +18,8 @@ const templates = {
     'byline': doT.template(bylineHTML),
     'header': doT.template(headerHTML),
     'text': doT.template(textHTML),
-    'gallery': doT.template(galleryHTML)
+    'gallery': doT.template(galleryHTML),
+    'related': doT.template(relatedHTML)
 };
 
 const components = {video, map};

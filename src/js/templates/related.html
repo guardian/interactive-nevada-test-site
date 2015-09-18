@@ -1,0 +1,13 @@
+<div class="nts-container">
+    <div class="nts-text" style="overflow: hidden">
+        <h3 class="nts-related-header">{{=it.header}}</h3>
+        <div class="nts-related-container">
+            {{~it.content :content:i}}
+                <a class="nts-related">
+                    <img class="nts-related__image" src="{{=content.image}}" />
+                    <p class="nts-related__title">{{=content.title}}</p>
+                </a>
+            {{~}}
+        </div>
+    </div>
+</div>
