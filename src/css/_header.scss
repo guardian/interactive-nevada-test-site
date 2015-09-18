@@ -2,12 +2,18 @@
     position: relative;
 
     color: white;
-    min-height: 30vh;
+    min-height: 200px;
     line-height: 1.25;
 
     padding: 10px;
     @include mq(mobileLandscape) {
         padding: 20px;
+    }
+    @include mq(tablet) {
+        min-height: 250px;
+    }
+    @include mq(desktop) {
+        min-height: 300px;
     }
 
     &.nts-header--collapsed {
