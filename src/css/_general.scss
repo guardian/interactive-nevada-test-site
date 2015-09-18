@@ -89,9 +89,11 @@ p {
 
 .nts-byline {
     color: #767676;
-    margin-top: 1.5em;
+    padding: 1.5em 10px 0;
+    @include mq(mobileLandscape) {
+        padding: 1.5em 20px 0;
+    }
     @include mq(desktop) {
-        margin-left: 20px;
         float: left;
     }
 }
