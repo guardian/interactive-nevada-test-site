@@ -38,6 +38,7 @@ export default function map(el, options) {
 
     var testEls = [].slice.call(el.querySelectorAll('.js-test'));
     var yearEl = el.querySelector('.js-year');
+    var countEl = el.querySelector('.js-count');
 
     var testI = 0;
     var timer;
@@ -45,6 +46,7 @@ export default function map(el, options) {
         if (testI < tests.length - 1) {
             rAF(() => {
                 yearEl.textContent = tests[testI].year;
+                countEl.textContent = testI + 1;
                 testEls[testI].className += ' is-visible';
                 testI++;
                 timer = setTimeout(addTest, 20);
