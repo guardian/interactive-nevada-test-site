@@ -1,11 +1,17 @@
 $scroll-tolerance: 75px;
 
 .nts-fullscreen--sticky {
-    padding-bottom: $scroll-tolerance;
-    overflow: hidden;
+    @include mq(desktop) {
+        padding-bottom: $scroll-tolerance;
+        overflow: hidden;
+    }
+    &.nts-fullscreen--always {
+        padding-bottom: $scroll-tolerance;
+        overflow: hidden;
+    }
 }
 
-.nts-sticky {
+@mixin nts-sticky {
     width: 100%;
     height: 100%;
 
@@ -23,5 +29,14 @@ $scroll-tolerance: 75px;
     &.is-bottom {
         position: relative;
         top: $scroll-tolerance;
+    }
+}
+
+.nts-sticky {
+    @include mq(desktop) {
+        @include nts-sticky;
+    }
+    &.nts-sticky--always {
+        @include nts-sticky;
     }
 }
