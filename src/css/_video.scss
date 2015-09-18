@@ -101,6 +101,7 @@ video::-webkit-media-controls {
     bottom: 20px;
     width: 100%;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.2s ease-out;
 
     display: none;
@@ -113,13 +114,13 @@ video::-webkit-media-controls {
 .nts-video[data-playing][data-muted] {
     & .nts-video__header {
         opacity: 1;
+        pointer-events: auto;
     }
 }
 
 .nts-video:not([data-playing]) .nts-video__control--play,
 .nts-video[data-controls][data-playing]:not([data-muted]) .nts-video__control--pause,
 .nts-video[data-playing][data-muted] .nts-video__control--restart {
-    z-index: 5;
     pointer-events: auto;
     opacity: 1;
 }
