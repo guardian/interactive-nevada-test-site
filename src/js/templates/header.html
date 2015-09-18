@@ -1,6 +1,11 @@
 <div class="nts-header" style="background-color: {{=it.color}}">
-    <h2 class="nts-header__headline">{{=it.headline}}</h2>
+    {{?it.image}}
+        <img class="nts-header__image" src="{{=it.config.assetPath}}{{=it.image}}" />
+    {{?}}
+    <h{{=it.importance || 2}} class="nts-header__headline nts-header__headline--{{=it.importance || 2}}">
+        {{=it.headline}}
+    </h{{=it.importance || 2}}>
     {{?it.author}}
-        <p class="nts-header__author">{{=it.author}}</h2>
+        <p class="nts-header__author">{{=it.author}}</p>
     {{?}}
 </div>

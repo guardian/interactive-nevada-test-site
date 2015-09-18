@@ -16,11 +16,9 @@
         {{?it.headline}}
             <div class="nts-video__header">
                 <div class="nts-header nts-header--collapsed">
-                    {{?it.large}}
-                        <h1 class="nts-header__headline nts-header__headline--large">{{=it.headline}}</h1>
-                    {{??}}
-                        <h2 class="nts-header__headline">{{=it.headline}}</h1>
-                    {{?}}
+                    <h{{=it.importance || 2}} class="nts-header__headline nts-header__headline--{{=it.importance || 2}}">
+                        {{=it.headline}}
+                    </h{{=it.importance || 2}}>
                 </div>
             </div>
         {{?}}

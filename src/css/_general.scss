@@ -69,32 +69,47 @@ p {
 
 .nts-header {
     color: white;
-    height: 50vh;
+    min-height: 30vh;
+
     &.nts-header--collapsed {
-        height: auto;
+        min-height: none;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
     }
 }
 
 .nts-header__headline {
-    @include f-header;
-    font-size: 40px;
+    @include f-headline;
     line-height: 1.25;
-    max-width: 740px;
 
-    &.nts-header__headline--large {
+    &.nts-header__headline--1 {
         font-size: 144px;
         line-height: 1.1;
-        max-width: none;
         text-shadow: 4px 4px rgba(0, 0, 0, 0.5)
+    }
+    &.nts-header__headline--2 {
+        font-size: 40px;
+        max-width: 740px;
+    }
+    &.nts-header__headline--3 {
+        font-size: 40px;
     }
 }
 
 .nts-header__author {
-    text-align: right;
     font-size: 20px;
     &::before {
         content: "\2014\00a0";
     }
+}
+
+.nts-header__image {
+    width: 300px;
+    float: right;
 }
 
 .nts-text {
