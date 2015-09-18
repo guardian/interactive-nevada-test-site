@@ -86,3 +86,22 @@ p {
         padding-left: 0;
     }
 }
+
+.nts-byline {
+    color: #767676;
+    margin-top: 1.5em;
+    @include mq(desktop) {
+        margin-left: 20px;
+        float: left;
+    }
+}
+
+.nts-byline__date {
+    @include fs-textSans(2);
+    padding: 2px 0 6px;
+}
+.nts-byline__byline {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+}

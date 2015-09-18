@@ -6,6 +6,7 @@ import testBandwidth from './lib/test-bandwidth'
 import video from './components/video'
 import map from './components/map'
 
+import bylineHTML from './templates/byline.html!text'
 import headerHTML from './templates/header.html!text'
 import textHTML from './templates/text.html!text'
 import galleryHTML from './templates/gallery.html!text'
@@ -13,6 +14,7 @@ import galleryHTML from './templates/gallery.html!text'
 const contentURL = '//interactive.guim.co.uk/docsdata-test/1gqa6aP0y7Hu5eaP4gKecUJbAmNz_-8LoeK34-oMvRPw.json';
 
 const templates = {
+    'byline': doT.template(bylineHTML),
     'header': doT.template(headerHTML),
     'text': doT.template(textHTML),
     'gallery': doT.template(galleryHTML)
@@ -21,7 +23,6 @@ const templates = {
 const components = {video, map};
 const baseComponent = type => (el, options) => el.innerHTML += templates[type](options);
 
-var shareFn = share('Interactive title', 'http://gu.com/p/URL', '#Interactive');
 
 function app(bitrate, el, config, resp) {
     config.bitrate = bitrate;
@@ -38,6 +39,13 @@ function app(bitrate, el, config, resp) {
         el.appendChild(componentEl);
         (components[block.block] || baseComponent(block.block))(componentEl, block);
     });
+
+    var shareFn = share(resp.share.title, resp.share.shorturl, resp.share.hashtag);
+
+    [].slice.apply(el.querySelectorAll('.interactive-share')).forEach(shareEl => {
+        var network = shareEl.getAttribute('data-network');
+        shareEl.addEventListener('click',() => shareFn(network));
+    });
 }
 
 export function init(el, context, config, mediator) {
@@ -53,9 +61,4 @@ export function init(el, context, config, mediator) {
             }
         }
     });
-
-    /*[].slice.apply(el.querySelectorAll('.interactive-share')).forEach(shareEl => {
-        var network = shareEl.getAttribute('data-network');
-        shareEl.addEventListener('click',() => shareFn(network));
-    });*/
 }

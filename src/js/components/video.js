@@ -22,8 +22,6 @@ export default function video(el, options) {
     var pauseEl = el.querySelector('.js-pause');
     var durationEl = el.querySelector('.js-duration');
 
-    videoEls.push(videoEl);
-
     // Controls (hide when mouse doesn't move)
     var timer;
     function showControls() {
@@ -43,7 +41,7 @@ export default function video(el, options) {
     videoEl.addEventListener('play', () => {
         for (var i = 0; i < videoEls.length; i++) {
             if (videoEls[i] !== videoEl) {
-                videoEls[i].stop();
+                videoEls[i].pause();
             }
         }
         containerEl.setAttribute('data-playing', '');
@@ -65,6 +63,8 @@ export default function video(el, options) {
         hideControls();
     }
     if (options.type !== 'intro') {
+        videoEls.push(videoEl);
+
         restartEl.addEventListener('click', () => videoEl.currentTime = 0);
         restartEl.addEventListener('click', userPlay);
         playEl.addEventListener('click', userPlay);

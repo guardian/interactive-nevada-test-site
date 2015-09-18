@@ -1,0 +1,17 @@
+<div class="nts-container">
+    <aside class="nts-byline">
+        <p class="nts-byline__byline">
+            By
+            {{~it.bylines :byline:i}}
+                <a href="{{=byline.link}}">{{=byline.name}}</a>
+                {{?i < it.bylines.length - 2}},{{??i === it.bylines.length - 2}}and{{?}}
+            {{~}}
+        </p>
+        <p class="nts-byline__date">{{=it.date}}</p>
+        <p>
+            <button class="interactive-share" data-network="facebook"></button>
+            <button class="interactive-share" data-network="twitter"></button>
+            <button class="interactive-share" data-network="email"></button>
+        </p>
+    </aside>
+</div>
