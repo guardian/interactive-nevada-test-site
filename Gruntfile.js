@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['src/css/**/*'],
-                tasks: ['sass:interactive'],
+                tasks: ['shell:interactiveCSS'],
             },
             assets: {
                 files: ['src/assets/**/*'],
@@ -31,22 +31,6 @@ module.exports = function(grunt) {
             build: ['build']
         },
 
-        sass: {
-            options: {
-                sourceMap: true
-            },
-            interactive: {
-                files: {
-                    'build/main.css': 'src/css/main.scss'
-                }
-            },
-            harness: {
-                files: {
-                    'build/fonts.css': 'harness/fonts.scss'
-                }
-            }
-        },
-
         shell: {
             interactive: {
                 command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/main build/main.js --format amd',
@@ -55,6 +39,12 @@ module.exports = function(grunt) {
                         cwd: '.'
                     }
                 }
+            },
+            interactiveCSS: {
+                command: 'sass --sourcemap=auto src/css/main.scss build/main.css'
+            },
+            harnessCSS: {
+                command: 'sass harness/fonts.scss build/font.css'
             }
         },
 
@@ -218,8 +208,8 @@ module.exports = function(grunt) {
         grunt.log.writeln(grunt.template.process('<%= visuals.s3.domain %><%= visuals.s3.path %>/boot.js'))
     })
 
-    grunt.registerTask('harness', ['copy:harness', 'template:harness', 'sass:harness', 'symlink:fonts'])
-    grunt.registerTask('interactive', ['shell:interactive', 'template:bootjs', 'sass:interactive', 'copy:assets'])
+    grunt.registerTask('harness', ['copy:harness', 'template:harness', 'shell:harnessCSS', 'symlink:fonts'])
+    grunt.registerTask('interactive', ['shell:interactive', 'template:bootjs', 'shell:interactiveCSS', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'harness', 'interactive', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'interactive']);
     grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'copy:deploy', 'aws_s3', 'boot_url']);
