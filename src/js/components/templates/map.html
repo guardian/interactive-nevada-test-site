@@ -11,6 +11,14 @@
                     </li>
                 {{~}}
             </ul>
+            <ul class="nts-map__labels">
+                {{~it.labels :label:i}}
+                    <span class="nts-map__labels__label nts-map__labels__label--{{=label.style}}"
+                        style="top: {{=label.top}}; right: {{=label.right}}; font-size: {{=label.size}}; color: {{=label.color}}">
+                        {{=label.label}}
+                    </span>
+                {{~}}
+            </ul>
             <div class="nts-map__stats">
                 <h2 class="nts-map__stats__year js-year"></h2>
             </div>

@@ -12,6 +12,7 @@ $map-height: 894px;
         }
         & > .nts-map__map,
         & > .nts-map__tests,
+        & > .nts-map__labels,
         & > .nts-map__stats {
             margin-left: -50%;
         }
@@ -59,6 +60,7 @@ $map-height: 894px;
     }
 }
 
+.nts-map__labels,
 .nts-map__tests {
     position: absolute;
     top: 0;
@@ -98,6 +100,21 @@ $map-height: 894px;
         -ms-transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
+    }
+}
+
+.nts-map__labels__label {
+    position: absolute;
+
+    &.nts-map__labels__label--headline {
+        @include f-headline;
+    }
+    &.nts-map__labels__label--sans-normal {
+        @include f-textSans;
+    }
+    &.nts-map__labels__label--sans-semibold {
+        @include f-textSans;
+        font-weight: 500;
     }
 }
 
