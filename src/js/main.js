@@ -37,6 +37,9 @@ export function init(el, context, config, mediator) {
                     block.copy = block.copy.replace(/[\r\n]+/g, '\n').trim().split('\n');
                 }
                 var componentEl = document.createElement('section');
+                if (block.darkcolor) {
+                    componentEl.style.backgroundColor = block.darkcolor;
+                }
                 el.appendChild(componentEl);
                 (components[block.block] || baseComponent(block.block))(componentEl, block);
             });
