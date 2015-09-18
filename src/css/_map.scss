@@ -38,8 +38,11 @@ $map-height: 894px;
     border-radius: 5px;
     background: none;
     margin: 0;
-    padding: 10px;
     outline: 0;
+    padding: 10px;
+    @include mq(mobileLandscape) {
+        padding: 20px;
+    }
 
     background-color: transparentize(black, 0.7);
 
