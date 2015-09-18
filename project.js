@@ -9,8 +9,8 @@ function scale(value, min, max, range) {
 
 var projection = d3.geo.mercator().scale(1).translate([0, 0]);
 
-var tl = projection([-118.354734435082, 38.105614421421]);
-var br = projection([-112.371994358809, 35.3361262757479]);
+var tl = projection([-117.816211392359,37.6208295393796]);
+var br = projection([-113.393483642213,35.5546056227236]);
 
 testsIn = JSON.parse(rw.readFileSync('/dev/stdin'));
 
@@ -62,7 +62,6 @@ tests.forEach(function (test) {
     if (test.yield) {
         test.yield = Math.round(scale(test.yield, minYield, maxYield, maxR) + minR);
     }
-    //delete test.date;
 });
 
 rw.writeFileSync('/dev/stdout', JSON.stringify(tests));
