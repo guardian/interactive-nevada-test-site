@@ -30,7 +30,7 @@ function app(bitrate, el, config, resp) {
     el.innerHTML = '';
     resp.blocks.forEach(block => {
         block.config = config;
-        if (block.copy) {
+        if (block.copy !== undefined) {
             block.copy = block.copy.replace(/[\r\n]+/g, '\n').trim().split('\n');
         }
         var componentEl = document.createElement('section');
