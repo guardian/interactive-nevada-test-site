@@ -32,13 +32,13 @@ export default function video(el, options) {
     }
     function hideControls(evt) {
         containerEl.removeAttribute('data-controls');
-        clearTimeout(timer);
-        timer = null;
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
     }
 
     containerEl.addEventListener('mousemove', () => rAF(showControls));
-    containerEl.addEventListener('mouseout', hideControls);
-
     // Video state
     videoEl.addEventListener('play', () => {
         for (var i = 0; i < videoEls.length; i++) {

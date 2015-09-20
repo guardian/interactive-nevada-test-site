@@ -17,7 +17,7 @@
     }
 
     &.nts-header--collapsed {
-        min-height: auto;
+        min-height: 0;
     }
 
     &::after {

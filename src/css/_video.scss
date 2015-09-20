@@ -103,6 +103,7 @@ video::-webkit-media-controls {
 
     transition: opacity 0.2s ease-out;
 
+    pointer-events: none;
     display: none;
     @include mq(tablet) {
         display: block;
@@ -123,8 +124,8 @@ video::-webkit-media-controls {
 .nts-video.is-sticky[data-playing]:not([data-muted]) .nts-video__header {
     -webkit-animation: header-out 2.2s ease-out;
     animation: header-out 2.2s ease-out;
+    transition: none;
     opacity: 0;
-    pointer-events: none;
 }
 
 .nts-video:not([data-playing]) .nts-video__control--play,
