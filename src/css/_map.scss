@@ -91,27 +91,27 @@ $map-height: 894px;
 }
 
 $test-types: (
-    underground: #ff9b0b,
-    atmospheric: #1c6326
+    underground: transparentize(#ff9b0b, 0.3),
+    atmospheric: transparentize(#1c6326, 0.3)
 );
 
 @mixin test($type, $color) {
     @-webkit-keyframes test-in-#{$type} {
         0% { background-color: transparent; }
         20% { background-color: #c05303; }
-        100% { background-color: transparentize($color, 0.3); }
+        100% { background-color: $color; }
     }
 
     @keyframes test-in-#{$type} {
         0% { background-color: transparent; }
         20% { background-color: #c05303; }
-        100% { background-color: transparentize($color, 0.3); }
+        100% { background-color: $color; }
     }
 
     .nts-map__tests__test--#{$type}.is-visible {
         -webkit-animation: test-in-#{$type} 1s 1;
         animation: test-in-#{$type} 1s 1;
-        background-color: transparentize($color, 0.3);
+        background-color: $color;
     }
 }
 
