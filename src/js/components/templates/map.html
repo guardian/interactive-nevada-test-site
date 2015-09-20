@@ -4,7 +4,7 @@
             <img class="nts-map__map" src="{{=it.config.assetPath}}/assets/imgs/map.png" />
             <ul class="nts-map__tests">
                 {{~it.tests :test:i}}
-                    <li class="nts-map__tests__test js-test"
+                    <li class="nts-map__tests__test nts-map__tests__test--{{=test.type}} js-test"
                         style="top: {{=test.point[1]}}%; left: {{=test.point[0]}}%;
                             width: {{=test.yield}}px; height: {{=test.yield}}px;
                             margin-top: {{=test.yield / -2}}px; margin-left: {{=test.yield / -2}}px">

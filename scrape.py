@@ -30,7 +30,8 @@ for fn in sys.argv[1:]:
             'datetime': datetime.text.strip(),
             'yield': yield_.text.strip(),
             'lat': float(lat),
-            'lng': float(lng)
+            'lng': float(lng),
+            'delivery': delivery.text.strip()
         })
 
 print json.dumps(tests)

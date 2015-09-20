@@ -48,8 +48,8 @@ export default function map(el, options) {
             rAF(() => {
                 yearEl.textContent = tests[testI].year;
                 testEls[testI].className += ' is-visible';
+                timer = setTimeout(addTest, tests[testI].delay);
                 testI++;
-                timer = setTimeout(addTest, 20);
             });
         }
     }

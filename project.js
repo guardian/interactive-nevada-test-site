@@ -23,6 +23,7 @@ var unitMultiplier = {
 
 var minYield = 100000, maxYield = 0;
 var minR = 7, maxR = 155;
+var yearLapse = 1000;
 
 var tests = testsIn.map(function (test) {
     var yield;
@@ -45,23 +46,44 @@ var tests = testsIn.map(function (test) {
     var point = projection([test.lng, test.lat]);
     var scaled = [scale(point[0], tl[0], br[0], 100), scale(point[1], tl[1], br[1], 100)];
 
+    var date = +new Date(test.datetime.split(' ').slice(0, 3).join(' '));
+
     return {
         'point': scaled.map(function (p) { return Number(p.toFixed(3)); }),
         'name': test.name,
         'yield': yield,
-        'year': parseInt(test.datetime.split(' ')[2])
+        'date': date,
+        'year': parseInt(test.datetime.split(' ')[2]),
+        'type': test.delivery.indexOf('underground') === -1 ? 'atmospheric' : 'underground'
     };
 }).filter(function (test) {
     var point = test.point;
     return point[0] >= 0 && point[0] <= 100 && point[1] >= 0 && point[1] <= 100;
-}).sort(function (a, b) {
-    return a.year - b.year;
 });
+
+var yearCounts = _(tests).groupBy('year').mapValues(function (yearTests) { return yearTests.length; }).value();
+
+// Hack to leave gap for year with no tests
+for (var year = 1952; year <= 1992; year++) {
+    if (!yearCounts[year]) {
+        tests.push({
+            'point': [0, 0],
+            'date': +new Date(year, 0, 1),
+            'year': year,
+            'yield': 0
+        });
+        yearCounts[year] = 1;
+    }
+}
+
+tests.sort(function (a, b) { return a.date - b.date; });
 
 tests.forEach(function (test) {
     if (test.yield) {
         test.yield = Math.round(scale(test.yield, minYield, maxYield, maxR) + minR);
     }
+    test.delay = Number((yearLapse / yearCounts[test.year]).toFixed(2));
+    delete test.date;
 });
 
-rw.writeFileSync('/dev/stdout', JSON.stringify(tests));
+rw.writeFileSync('/dev/stdout', JSON.stringify(tests, 'year'));

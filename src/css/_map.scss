@@ -73,17 +73,6 @@ $map-height: 894px;
     padding: 0;
 }
 
-@-webkit-keyframes test-in {
-    0% { background-color: transparent; }
-    20% { background-color: #c05303; }
-    100% { background-color: transparentize(#ff9b0b, 0.5); }
-}
-@keyframes test-in {
-    0% { background-color: transparent; }
-    20% { background-color: #c05303; }
-    100% { background-color: transparentize(#ff9b0b, 0.5); }
-}
-
 .nts-map__tests__test {
     position: absolute;
     border-radius: 100px;
@@ -94,13 +83,40 @@ $map-height: 894px;
     transform: translate(-1000px, -1000px);
 
     &.is-visible {
-        -webkit-animation: test-in 1s 1;
-        animation: test-in 1s 1;
         background-color: transparentize(#ff9b0b, 0.5);
         -ms-transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
     }
+}
+
+$test-types: (
+    underground: #ff9b0b,
+    atmospheric: #197caa
+);
+
+@mixin test($type, $color) {
+    @-webkit-keyframes test-in-#{$type} {
+        0% { background-color: transparent; }
+        20% { background-color: #c05303; }
+        100% { background-color: transparentize($color, 0.5); }
+    }
+
+    @keyframes test-in-#{$type} {
+        0% { background-color: transparent; }
+        20% { background-color: #c05303; }
+        100% { background-color: transparentize($color, 0.5); }
+    }
+
+    .nts-map__tests__test--#{$type}.is-visible {
+        -webkit-animation: test-in-#{$type} 1s 1;
+        animation: test-in-#{$type} 1s 1;
+        background-color: transparentize($color, 0.5);
+    }
+}
+
+@each $type, $color in $test-types {
+    @include test($type, $color);
 }
 
 .nts-map__labels__label {
