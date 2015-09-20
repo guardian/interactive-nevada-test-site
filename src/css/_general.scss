@@ -99,6 +99,10 @@ p {
     }
     @include mq(desktop) {
         float: left;
+        max-width: 190px;
+    }
+    @include mq(wide) {
+        max-width: 270px;
     }
 }
 
