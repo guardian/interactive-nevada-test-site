@@ -92,31 +92,35 @@ $map-height: 894px;
 
 $test-types: (
     underground: #ff9b0b,
-    atmospheric: #197caa
+    atmospheric: #1c6326
 );
 
 @mixin test($type, $color) {
     @-webkit-keyframes test-in-#{$type} {
         0% { background-color: transparent; }
         20% { background-color: #c05303; }
-        100% { background-color: transparentize($color, 0.5); }
+        100% { background-color: transparentize($color, 0.3); }
     }
 
     @keyframes test-in-#{$type} {
         0% { background-color: transparent; }
         20% { background-color: #c05303; }
-        100% { background-color: transparentize($color, 0.5); }
+        100% { background-color: transparentize($color, 0.3); }
     }
 
     .nts-map__tests__test--#{$type}.is-visible {
         -webkit-animation: test-in-#{$type} 1s 1;
         animation: test-in-#{$type} 1s 1;
-        background-color: transparentize($color, 0.5);
+        background-color: transparentize($color, 0.3);
     }
 }
 
 @each $type, $color in $test-types {
     @include test($type, $color);
+}
+
+.nts-map__tests__test--atmospheric {
+    z-index: 2;
 }
 
 .nts-map__labels__label {
