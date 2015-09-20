@@ -32,7 +32,7 @@ window.addEventListener('resize', () => rAF(setRatio.bind(null, mapEls)));
 export default function map(el, options) {
     options.tests = tests;
     options.labels = labels;
-    el.innerHTML += templateFn(options);
+    el.innerHTML = templateFn(options);
 
     var mapEl = el.querySelector('.js-map');
     mapEls.push(mapEl);

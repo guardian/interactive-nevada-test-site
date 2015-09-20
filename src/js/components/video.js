@@ -14,7 +14,7 @@ var hasUserUnmuted = false;
 var videoEls = [];
 
 export default function video(el, options) {
-    el.innerHTML += templateFn(options);
+    el.innerHTML = templateFn(options);
 
     var containerEl = el.querySelector('.js-video-container');
     var videoEl = el.querySelector('.js-video');
