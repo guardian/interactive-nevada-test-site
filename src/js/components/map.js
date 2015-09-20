@@ -1,6 +1,7 @@
 import doT from 'olado/doT'
 import sticky from '../lib/sticky'
 import autoplay from '../lib/autoplay'
+import rAF from '../lib/raf'
 import template from './templates/map.html!text'
 import tests from '../data/tests.json!json'
 import labels from '../data/labels.json!json'
@@ -10,8 +11,6 @@ const templateFn = doT.template(template);
 const mapWidth = 1555;
 const mapHeight = 894;
 const mapRatio = mapWidth / mapHeight;
-
-var rAF = window.requestAnimationFrame || (fn => fn());
 
 var setRatio = (function () {
     var lastRatio;

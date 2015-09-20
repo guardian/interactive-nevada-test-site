@@ -1,6 +1,7 @@
 import doT from 'olado/doT'
 import sticky from '../lib/sticky'
 import autoplay from '../lib/autoplay'
+import rAF from '../lib/raf'
 import template from './templates/video.html!text'
 
 const templateFn = doT.template(template);
@@ -24,21 +25,18 @@ export default function video(el, options) {
 
     // Controls (hide when mouse doesn't move)
     var timer;
-    function clearTimer() {
-        clearTimeout(timer);
-    }
-    function showControls() {
-        containerEl.setAttribute('data-controls', '');
-        containerEl.addEventListener('mousemove', clearTimer);
+    function showControls(evt) {
+        if (timer) clearTimeout(timer);
+        else containerEl.setAttribute('data-controls', '');
         timer = setTimeout(hideControls, 2000);
     }
-    function hideControls() {
-        containerEl.removeEventListener('mousemove', clearTimer);
+    function hideControls(evt) {
         containerEl.removeAttribute('data-controls');
         clearTimeout(timer);
+        timer = null;
     }
 
-    containerEl.addEventListener('mouseover', showControls);
+    containerEl.addEventListener('mousemove', () => rAF(showControls));
     containerEl.addEventListener('mouseout', hideControls);
 
     // Video state
@@ -89,6 +87,7 @@ export default function video(el, options) {
             if (videoEl.muted) {
                 if (hasUserUnmuted) {
                     videoEl.muted = false;
+                    videoEl.currentTime = 0;
                 }
                 if (isVisible) {
                     videoEl.play();

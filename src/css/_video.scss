@@ -100,8 +100,7 @@ video::-webkit-media-controls {
     left: 0;
     bottom: 20px;
     width: 100%;
-    opacity: 0;
-    pointer-events: none;
+
     transition: opacity 0.2s ease-out;
 
     display: none;
@@ -110,12 +109,16 @@ video::-webkit-media-controls {
     }
 }
 
-.nts-video:not([data-playing]),
-.nts-video[data-playing][data-muted] {
-    & .nts-video__header {
-        opacity: 1;
-        pointer-events: auto;
-    }
+@keyframes header-out {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.nts-video.is-sticky[data-playing]:not([data-muted]) .nts-video__header {
+    animation: header-out 2.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nts-video:not([data-playing]) .nts-video__control--play,
