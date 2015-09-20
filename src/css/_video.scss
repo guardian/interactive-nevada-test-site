@@ -109,6 +109,11 @@ video::-webkit-media-controls {
     }
 }
 
+@-webkit-keyframes header-out {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
 @keyframes header-out {
     0% { opacity: 1; }
     90% { opacity: 1; }
@@ -116,6 +121,7 @@ video::-webkit-media-controls {
 }
 
 .nts-video.is-sticky[data-playing]:not([data-muted]) .nts-video__header {
+    -webkit-animation: header-out 2.2s ease-out;
     animation: header-out 2.2s ease-out;
     opacity: 0;
     pointer-events: none;
