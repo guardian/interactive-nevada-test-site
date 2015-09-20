@@ -1,5 +1,13 @@
-{{~it.photos :photo:i}}
-    <div class="nts-container">
-        <img src="{{=photo.link}}" />
+<div class="nts-fullscreen nts-fullscreen--sticky">
+    <div class="nts-gallery nts-sticky js-sticky">
+        {{~it.photos :photo:i}}
+            <div class="nts-photo js-photo" style="background-image: url({{=it.config.assetPath}}{{=photo.link}})"></div>
+        {{~}}
+        <button class="nts-photo-prev js-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -5 42 42"><path fill="currentColor" d="m 20.3,4.4 -8.4,10.5 -0.9,1.1 0.9,1.1 8.4,10.5 0.7,-0.5 -6.3,-11.1 6.3,-11.1 -0.7,-0.5 z"/></svg>
+        </button>
+        <button class="nts-photo-next js-next">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -5 42 42"><path fill="currentColor" d="m 11.7,4.4 8.4,10.5 0.9,1.1 -0.9,1.1 -8.4,10.5 -0.7,-0.5 6.3,-11.1 -6.3,-11.1 0.7,-0.5 z"/></svg>
+        </button>
     </div>
-{{~}}
+</div>
