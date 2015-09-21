@@ -48,7 +48,7 @@ p {
 }
 
 .nts-container {
-    background-color: white;
+    background-color: white!important;
 
     @include mq(desktop) {
         &.nts-container--inline {
@@ -59,6 +59,7 @@ p {
 
 .nts-fullscreen {
     position: relative;
+    background-color: #000;
     @include mq(desktop) {
         height: 100vh;
     }
@@ -174,6 +175,7 @@ p {
 .nts-gallery {
     position: relative;
     padding-bottom: 56.25%;
+    background-color:#FFF;
     @include mq(desktop) {
         padding-bottom: 0;
     }

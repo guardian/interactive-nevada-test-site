@@ -1,4 +1,4 @@
-const scrollTolerance = 75;
+const scrollTolerance = 40;
 
 var rAF = window.requestAnimationFrame || (fn => fn());
 

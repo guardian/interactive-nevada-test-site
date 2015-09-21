@@ -1,5 +1,5 @@
 import doT from 'olado/doT'
-import sticky from '../lib/sticky'
+// import sticky from '../lib/sticky'
 import template from './templates/gallery.html!text'
 
 const templateFn = doT.template(template);
@@ -28,7 +28,7 @@ export default function (el, options) {
 
     show(photoI);
 
-    if (window.innerWidth > 600) {
-        sticky(el, el.querySelector('.js-sticky'));
-    }
+    // if (window.innerWidth > 600) {
+    //     sticky(el, el.querySelector('.js-sticky'));
+    // }
 }

@@ -29,41 +29,44 @@
 
 .nts-header__headline {
     @include f-headline;
-    line-height: 1.1;
+    line-height: 1.2;
+    max-width: 720px;
 
     &.nts-header__headline--1 {
         text-shadow: 4px 4px rgba(0, 0, 0, 0.5);
-        font-size: 85px;
+        font-size: 80px;
+        max-width: 100%;
         @include mq(desktop) {
-            font-size: 115px;
+            font-size: 100px;
         }
         @include mq(leftCol) {
-            font-size: 135px;
+            font-size: 120px;
         }
     }
     &.nts-header__headline--2 {
-        font-size: 60px;
+        font-size: 40px;
+        max-width: 100%;
         @include mq(desktop) {
-            font-size: 70px;
+            font-size: 48px;
         }
         text-shadow: 2px 2px rgba(0, 0, 0, 0.5)
     }
     &.nts-header__headline--3 {
-        font-size: 25px;
+        font-size: 21px;
         @include mq(tablet) {
-            font-size: 35px;
+            font-size: 28px;
         }
         @include mq(desktop) {
-            font-size: 40px;
+            font-size: 36px;
         }
     }
     &.nts-header__headline--4 {
-        font-size: 18px;
+        font-size: 16px;
         @include mq(tablet) {
-            font-size: 25px;
+            font-size: 24px;
         }
         @include mq(desktop) {
-            font-size: 30px;
+            font-size: 28px;
         }
     }
 }
@@ -82,6 +85,7 @@
         width: 200px;
         float: right;
         margin-left: 20px;
+        padding-right: 40px;
     }
     @include mq(tablet) {
         width: 300px;

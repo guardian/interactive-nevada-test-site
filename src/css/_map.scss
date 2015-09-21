@@ -83,7 +83,7 @@ $map-height: 894px;
     transform: translate(-1000px, -1000px);
 
     &.is-visible {
-        background-color: transparentize(#ff9b0b, 0.5);
+        background-color: transparentize(#ffce4b, 0.5);
         -ms-transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
@@ -91,8 +91,8 @@ $map-height: 894px;
 }
 
 $test-types: (
-    underground: transparentize(#ff9b0b, 0.3),
-    atmospheric: transparentize(#1c6326, 0.3)
+    underground: transparentize(#ffce4b, 0.3),
+    atmospheric: transparentize(#ff5b3a, 0.3)
 );
 
 @mixin test($type, $color) {
