@@ -68,6 +68,7 @@ p {
 
     &.nts-fullscreen--always {
         height: 100vh;
+        overflow: hidden;
     }
 }
 

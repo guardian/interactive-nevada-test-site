@@ -54,12 +54,6 @@ export function init(el, context, config, mediator) {
         url: contentURL,
         type: 'json',
         crossOrigin: true,
-        success: resp => {
-            if (window.innerWidth > 600) {
-                testBandwidth(bitrate => app(bitrate, el, config, resp));
-            } else {
-                app("500", el, config, resp);
-            }
-        }
+        success: resp => testBandwidth(bitrate => app(bitrate, el, config, resp))
     });
 }
