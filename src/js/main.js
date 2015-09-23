@@ -12,7 +12,7 @@ import headerHTML from './templates/header.html!text'
 import textHTML from './templates/text.html!text'
 import relatedHTML from './templates/related.html!text'
 
-const contentURL = 'http://interactive.guim.co.uk/docsdata/1gqa6aP0y7Hu5eaP4gKecUJbAmNz_-8LoeK34-oMvRPw.json';
+const contentURL = 'https://interactive.guim.co.uk/docsdata/1gqa6aP0y7Hu5eaP4gKecUJbAmNz_-8LoeK34-oMvRPw.json';
 
 const templates = {
     'byline': doT.template(bylineHTML),
